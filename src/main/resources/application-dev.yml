@@ -1,0 +1,67 @@
+# 服务器的端口和contextPath的配置
+server:
+ port: 10011
+ contextPath: /super-me
+
+# Actuator 监控访问端口 默认值跟上面的端口一样
+management:
+ port: 10012
+ context-path: /manage
+ 
+spring:
+ datasource:  # 数据库的配置 用的是阿里的druid连接池
+  url: jdbc:mysql://154.8.141.51:3306/super-me?rewriteBatchedStatements=true&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+  username: root
+  password: zhsj201314
+  driver-class-name: com.mysql.jdbc.Driver
+  type: com.alibaba.druid.pool.DruidDataSource
+  initialSize: 5
+  minIdle: 5
+  maxActive: 20
+  maxWait: 60000
+  timeBetweenEvictionRunsMillis: 60000
+  minEvictableIdleTimeMillis: 300000
+  validationQuery: SELECT 1 FROM DUAL
+  testWhileIdle: true
+  testOnBorrow: false
+  testOnReturn: false
+  poolPreparedStatements: true
+  maxPoolPreparedStatementPerConnectionSize: 20
+  filters: stat,wall,log4j
+ devtools:
+  restart:
+   enabled: true
+ mail:
+  host: smtp.163.com
+  username: zhsj201314@163.com
+  password: zhsj201314
+  properties:
+   mail:
+    smtp:
+     auth: true
+     starttls:
+      enable: true
+      required: true
+# MyBatis 的配置
+mybatis:
+ typeAliasesPackage: com.hengzhang.springboot.entity
+ mapperLocations: classpath:mapper/*.xml
+ configuration:
+  call-setters-on-nulls: true
+
+# 日志管理
+logging:
+ level:
+  com:
+   hengzhang:
+    springboot:
+     dao: debug
+ file:
+  /usr/local/super-me.log
+# 权限验证
+security:
+ user:
+  name: zhsj201314
+  password: zhsj201314
+ basic:
+  enabled: false
