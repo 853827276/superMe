@@ -108,7 +108,10 @@
 			<artifactId>pagehelper</artifactId>
 			<version>4.1.6</version>
 		</dependency>
-		<!-- 分页插件pagehelper -->
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
